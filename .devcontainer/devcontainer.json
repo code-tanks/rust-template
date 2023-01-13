@@ -1,0 +1,23 @@
+{
+    "name": "code-tanks-rust-devcontainer",
+    "image": "ghcr.io/code-tanks/code-tanks-rust-devcontainer:latest",
+    "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "rust-analyzer.diagnostics.disabled": [
+            "unresolved-proc-macro"
+        ]
+    },
+    "extensions": [
+        "ms-vscode-remote.remote-containers",
+        "rust-lang.rust-analyzer"
+    ],
+    "runArgs": [
+        "--network=host",
+        "--volume=/var/lib/docker",
+        "--privileged"
+    ],
+    "remoteUser": "developer",
+    "postCreateCommand": "git config --global --add safe.directory /home/developer/workspace",
+    "workspaceMount": "source=${localWorkspaceFolder}/,target=/home/developer/workspace,type=bind,consistency=delegated",
+    "workspaceFolder": "/home/developer/workspace"
+}
